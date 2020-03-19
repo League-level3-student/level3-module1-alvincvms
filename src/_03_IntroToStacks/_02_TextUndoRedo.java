@@ -32,6 +32,7 @@ public class _02_TextUndoRedo implements KeyListener {
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setMinimumSize(new Dimension(300,400));
+		window.setMaximumSize(new Dimension(300,400));
 		window.setLocation(1000, 600);
 		window.add(label);
 		window.addKeyListener(this);
@@ -40,7 +41,8 @@ public class _02_TextUndoRedo implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-			
+			String s = label.getText();
+			unfinished
 		}
 	}
 	@Override

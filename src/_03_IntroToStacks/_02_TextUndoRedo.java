@@ -23,7 +23,9 @@ public class _02_TextUndoRedo implements KeyListener {
 	 * */
 	JFrame window = new JFrame("Text Editor");
 	JLabel label = new JLabel("");
+	String s;
 	Stack<Character> c = new Stack<Character>();
+	Stack<Character> d = new Stack<Character>();
 	
 	public static void main(String[] args) {
 		new _02_TextUndoRedo().run();
@@ -40,9 +42,25 @@ public class _02_TextUndoRedo implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-			String s = label.getText();
-			unfinished
+		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE && c.size() > 0) {
+			char x = c.pop();
+			d.push(x);
+			s = "";
+			for(int i = 0; i < c.size(); i++) {
+				s += c.get(i);
+			}
+			label.setText(s);
+			window.pack();
+		}
+		if(e.getKeyCode() == KeyEvent.VK_Z && e.isControlDown() && d.size() > 0) {
+			char x = d.pop();
+			c.push(x);
+			s = "";
+			for(int i = 0; i < c.size(); i++) {
+				s += c.get(i);
+			}
+			label.setText(s);
+			window.pack();
 		}
 	}
 	@Override
@@ -53,9 +71,15 @@ public class _02_TextUndoRedo implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		Character a = e.getKeyChar();
-		String s = label.getText();
-		label.setText(s + a);
-		window.pack();
+		if(e.getKeyChar() != KeyEvent.VK_BACK_SPACE && !e.isControlDown()) {
+			Character a = e.getKeyChar();
+			s = "";
+			c.push(a);
+			for(int i = 0; i < c.size(); i++) {
+				s += c.get(i);
+			}
+			label.setText(s);
+			window.pack();
+		}
 	}
 }

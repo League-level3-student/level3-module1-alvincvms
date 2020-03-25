@@ -50,7 +50,7 @@ public class StringIntegerPair {
 	//6. Complete the containsKey method so that it returns true if the
 	//   passed in keys is contained in the keys array
 	public boolean containsKey(String key) {
-		
+		unfinished
 		return false;
 	}
 	
